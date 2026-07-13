@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+.claude/
+
+# 敏感数据文件（本地保留，不上传仓库）
+authorized_ids.json
+login_logs.json

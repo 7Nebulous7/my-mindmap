@@ -1,0 +1,1362 @@
+{
+  "id": "root",
+  "topic": "萌新必看小常识",
+  "children": [
+    {
+      "id": "damage",
+      "topic": "伤害好低，怎么办？",
+      "children": [
+        {
+          "id": "wuxue",
+          "topic": "武学",
+          "children": [
+            {
+              "id": "wuxue_what",
+              "topic": "什么武学好啊",
+              "children": [
+                {
+                  "id": "wuxue_official",
+                  "topic": "官配流派",
+                  "children": [
+                    {
+                      "id": "wuxue_official_1",
+                      "topic": "鸣金虹：无名剑法 + 无名枪法"
+                    },
+                    {
+                      "id": "wuxue_official_2",
+                      "topic": "鸣金影：积矩九剑 + 九曲惊神枪"
+                    },
+                    {
+                      "id": "wuxue_official_3",
+                      "topic": "裂石威：嗟夫刀法 + 八方风雷枪"
+                    },
+                    {
+                      "id": "wuxue_official_4",
+                      "topic": "牵丝玉：九重春色 + 青山执笔"
+                    },
+                    {
+                      "id": "wuxue_official_5",
+                      "topic": "破竹风：泥犁三垢 + 栗子游尘"
+                    },
+                    {
+                      "id": "wuxue_official_6",
+                      "topic": "牵丝霖：明川药典 + 干香引魂蛊"
+                    },
+                    {
+                      "id": "wuxue_official_7",
+                      "topic": "破竹尘：醉梦游春 + 栗子行云"
+                    },
+                    {
+                      "id": "wuxue_official_8",
+                      "topic": "裂石钧：十方破阵 + 斩雪刀法"
+                    },
+                    {
+                      "id": "wuxue_official_9",
+                      "topic": "破竹鸢：天志垂象 + 干机索天"
+                    },
+                    {
+                      "id": "wuxue_official_10",
+                      "topic": "牵丝翎：文动霓裳 + 杏游春野"
+                    }
+                  ]
+                },
+                {
+                  "id": "wuxue_xiexiu",
+                  "topic": "邪修",
+                  "children": [
+                    {
+                      "id": "wuxue_xiexiu_1",
+                      "topic": "武学混搭也ok"
+                    },
+                    {
+                      "id": "wuxue_xiexiu_2",
+                      "topic": "建议咨询一下流派大佬"
+                    }
+                  ]
+                },
+                {
+                  "id": "wuxue_choose",
+                  "topic": "选武学核心建议",
+                  "children": [
+                    {
+                      "id": "wuxue_choose_1",
+                      "topic": "选自己喜欢的两种，资源有限养不起太多"
+                    },
+                    {
+                      "id": "wuxue_choose_2",
+                      "topic": "不要跟风追求强势武学，陪伴你大部分时间"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "wuxue_how",
+              "topic": "怎么养武学",
+              "children": [
+                {
+                  "id": "wuxue_how_material",
+                  "topic": "升级材料获取",
+                  "children": [
+                    {
+                      "id": "wuxue_how_material_1",
+                      "topic": "点开缺的那个材料，下面会显示来源"
+                    }
+                  ]
+                },
+                {
+                  "id": "wuxue_how_level",
+                  "topic": "等级同步",
+                  "children": [
+                    {
+                      "id": "wuxue_how_level_1",
+                      "topic": "角色等级多少级，武学最好升到相同等级"
+                    }
+                  ]
+                },
+                {
+                  "id": "wuxue_how_money",
+                  "topic": "宋元不够怎么办",
+                  "children": [
+                    {
+                      "id": "wuxue_how_money_1",
+                      "topic": "每周有不同通宝代币兑换，可换宋元"
+                    },
+                    {
+                      "id": "wuxue_how_money_2",
+                      "topic": "也可以直接赚宋元"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "xinfa",
+          "topic": "心法",
+          "children": [
+            {
+              "id": "xinfa_tips_1",
+              "topic": "不同流派心法不一样"
+            },
+            {
+              "id": "xinfa_tips_2",
+              "topic": "建议咨询一下流派大佬"
+            }
+          ]
+        },
+        {
+          "id": "qishu",
+          "topic": "奇术",
+          "children": [
+            {
+              "id": "taiji",
+              "topic": "太极",
+              "children": [
+                {
+                  "id": "taiji_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "taiji_explore_1",
+                      "topic": "巨石封住的宝箱，需要用太极把附近的熊扔向石头"
+                    },
+                    {
+                      "id": "taiji_explore_2",
+                      "topic": "清理淤泥，可以用太极接水流，然后打在淤泥上"
+                    },
+                    {
+                      "id": "taiji_explore_3",
+                      "topic": "在特定圆盘上收集落叶，可以获取八骏图"
+                    }
+                  ]
+                },
+                {
+                  "id": "taiji_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "taiji_combat_1",
+                      "topic": "地形杀：水边战斗可以把敌人直接丢水里淹死"
+                    },
+                    {
+                      "id": "taiji_combat_2",
+                      "topic": "快速卸盾：持盾敌人，用两次太极能卸掉盾牌"
+                    },
+                    {
+                      "id": "taiji_combat_3",
+                      "topic": "打断技能：小怪都可以随意大小丢"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "jinyushou",
+              "topic": "金玉手",
+              "children": [
+                {
+                  "id": "jinyushou_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "jinyushou_explore_1",
+                      "topic": "“步调一致”任务，在适合时机定身npc"
+                    },
+                    {
+                      "id": "jinyushou_explore_2",
+                      "topic": "特殊互动，破解特定机关（如门环）"
+                    },
+                    {
+                      "id": "jinyushou_explore_3",
+                      "topic": "抢马，先用点穴让npc下马再上去骑"
+                    },
+                    {
+                      "id": "jinyushou_explore_4",
+                      "topic": "与好友相互点穴（不建议对路人使用）"
+                    }
+                  ]
+                },
+                {
+                  "id": "jinyushou_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "jinyushou_combat_1",
+                      "topic": "无敌帧特性：抓准时机可实现"
+                    },
+                    {
+                      "id": "jinyushou_combat_2",
+                      "topic": "pvp处决：气竭距离远时用金玉手+处决"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "shexingnayue",
+              "topic": "摄星拿月",
+              "children": [
+                {
+                  "id": "shexingnayue_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "shexingnayue_explore_1",
+                      "topic": "开启被看守的宝箱，注意不要被发现"
+                    },
+                    {
+                      "id": "shexingnayue_explore_2",
+                      "topic": "偷取npc身上物品，注意不要被发现"
+                    }
+                  ]
+                },
+                {
+                  "id": "shexingnayue_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "shexingnayue_combat_1",
+                      "topic": "远程开启宝箱"
+                    },
+                    {
+                      "id": "shexingnayue_combat_2",
+                      "topic": "抢走小怪或boss的重型武器并回击"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "lingyunta",
+              "topic": "凌云踏",
+              "children": [
+                {
+                  "id": "lingyunta_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "lingyunta_explore_1",
+                      "topic": "跳跃限制的秘境，最高点再跳实现三段跳"
+                    }
+                  ]
+                },
+                {
+                  "id": "lingyunta_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "lingyunta_combat_1",
+                      "topic": "克制骑兵与下盘不稳的敌人"
+                    },
+                    {
+                      "id": "lingyunta_combat_2",
+                      "topic": "组合奇术“韦陀正法”：如来神掌真的帅！"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "suogugong",
+              "topic": "缩骨功",
+              "children": [
+                {
+                  "id": "suogugong_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "suogugong_explore_1",
+                      "topic": "进入狭小空间拿取宝箱，变回原形时要找宽阔地方"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "shihouzhengsheng",
+              "topic": "狮吼正声",
+              "children": [
+                {
+                  "id": "shihouzhengsheng_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "shihouzhengsheng_combat_1",
+                      "topic": "打断boss技能（如野外boss“听梅点雪”）"
+                    },
+                    {
+                      "id": "shihouzhengsheng_combat_2",
+                      "topic": "pvp强韧效果"
+                    },
+                    {
+                      "id": "shihouzhengsheng_combat_3",
+                      "topic": "组合“金蟾腾跃”：挂蟾毒后狮吼引爆"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "jinchantengyue",
+              "topic": "金蟾腾跃",
+              "children": [
+                {
+                  "id": "jinchantengyue_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "jinchantengyue_combat_1",
+                      "topic": "组合“狮吼正声”：挂蟾毒后狮吼引爆"
+                    },
+                    {
+                      "id": "jinchantengyue_combat_2",
+                      "topic": "pvp强韧效果"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yanjiushi",
+              "topic": "衍九矢",
+              "children": [
+                {
+                  "id": "yanjiushi_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "yanjiushi_combat_1",
+                      "topic": "pvp远程攻击"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "moxihanhua",
+              "topic": "墨洗翰华",
+              "children": [
+                {
+                  "id": "moxihanhua_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "moxihanhua_explore_1",
+                      "topic": "可自定义显示文字"
+                    }
+                  ]
+                },
+                {
+                  "id": "moxihanhua_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "moxihanhua_combat_1",
+                      "topic": "pvp"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "baigui",
+              "topic": "百鬼打穴手",
+              "children": [
+                {
+                  "id": "baigui_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "baigui_explore_1",
+                      "topic": "偷师"
+                    },
+                    {
+                      "id": "baigui_explore_2",
+                      "topic": "定群怪"
+                    }
+                  ]
+                },
+                {
+                  "id": "baigui_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "baigui_combat_1",
+                      "topic": "打“黑财神”三阶段可定住小怪"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "weituozhengfa",
+              "topic": "韦陀正法",
+              "children": [
+                {
+                  "id": "weituozhengfa_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "weituozhengfa_combat_1",
+                      "topic": "五重后高空打出如来神掌（凌云踏+韦陀）"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "liuxingzhuihuo",
+              "topic": "流星坠火",
+              "children": [
+                {
+                  "id": "liuxingzhuihuo_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "liuxingzhuihuo_combat_1",
+                      "topic": "被群殴时用于突围"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xiaoyinqianlang",
+              "topic": "箫吟千浪",
+              "children": [
+                {
+                  "id": "xiaoyinqianlang_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "xiaoyinqianlang_explore_1",
+                      "topic": "可自定义背景音乐"
+                    }
+                  ]
+                },
+                {
+                  "id": "xiaoyinqianlang_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "xiaoyinqianlang_combat_1",
+                      "topic": "清群怪"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "duijianruwu",
+              "topic": "对剑如晤",
+              "children": [
+                {
+                  "id": "duijianruwu_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "duijianruwu_combat_1",
+                      "topic": "pvp"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yingzhaolianzao",
+              "topic": "鹰爪连凿",
+              "children": [
+                {
+                  "id": "yingzhaolianzao_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "yingzhaolianzao_combat_1",
+                      "topic": "pvp破防"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yaochapomo",
+              "topic": "药叉破魔",
+              "children": [
+                {
+                  "id": "yaochapomo_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "yaochapomo_combat_1",
+                      "topic": "pvp破防"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "zizaiwulai",
+              "topic": "自在无碍",
+              "children": [
+                {
+                  "id": "zizaiwulai_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "zizaiwulai_combat_1",
+                      "topic": "pvp"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "gouzuiduoshi",
+              "topic": "狗嘴夺食",
+              "children": [
+                {
+                  "id": "gouzuiduoshi_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "gouzuiduoshi_combat_1",
+                      "topic": "克制骑兵和下盘不稳的敌人"
+                    },
+                    {
+                      "id": "gouzuiduoshi_combat_2",
+                      "topic": "pvp"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qilonghuima",
+              "topic": "骑龙回马",
+              "children": [
+                {
+                  "id": "qilonghuima_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "qilonghuima_combat_1",
+                      "topic": "五重后前段可触发完美闪避"
+                    },
+                    {
+                      "id": "qilonghuima_combat_2",
+                      "topic": "pvp减疗"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "shenlongtuhuo",
+              "topic": "神龙吐火",
+              "children": [
+                {
+                  "id": "shenlongtuhuo_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "shenlongtuhuo_combat_1",
+                      "topic": "组合“太白醉月”：太白1+吐火+太白2345"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "taibaizuiyue",
+              "topic": "太白醉月",
+              "children": [
+                {
+                  "id": "taibaizuiyue_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "taibaizuiyue_combat_1",
+                      "topic": "组合“神龙吐火”：太白1+吐火+太白2345"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yelongxiangshou",
+              "topic": "叶龙骧首",
+              "children": [
+                {
+                  "id": "yelongxiangshou_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "yelongxiangshou_combat_1",
+                      "topic": "消耗大冷却长，伤害高，适合最后补伤害"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "wanwuweifeng",
+              "topic": "万物为锋",
+              "children": [
+                {
+                  "id": "wanwuweifeng_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "wanwuweifeng_combat_1",
+                      "topic": "奶妈专用"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "hongchenzhangmu",
+              "topic": "红尘障目",
+              "children": [
+                {
+                  "id": "hongchenzhangmu_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "hongchenzhangmu_explore_1",
+                      "topic": "让小怪丢失视野进行暗杀"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "qingfengjiyue",
+              "topic": "清风霁月",
+              "children": [
+                {
+                  "id": "qingfengjiyue_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "qingfengjiyue_combat_1",
+                      "topic": "pvp解控"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "wuxiangjinshen",
+              "topic": "无相金身",
+              "children": [
+                {
+                  "id": "wuxiangjinshen_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "wuxiangjinshen_combat_1",
+                      "topic": "pvp护盾，有强韧效果"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yinyangmizongbu",
+              "topic": "阴阳迷踪步",
+              "children": [
+                {
+                  "id": "yinyangmizongbu_combat",
+                  "topic": "战斗",
+                  "children": [
+                    {
+                      "id": "yinyangmizongbu_combat_1",
+                      "topic": "pvp闪避耐力消耗减少"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yiezhiming",
+              "topic": "以鹅之名",
+              "children": [
+                {
+                  "id": "yiezhiming_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "yiezhiming_explore_1",
+                      "topic": "时停效果，减缓时间流速"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yingguanghuiye",
+              "topic": "萤光辉夜",
+              "children": [
+                {
+                  "id": "yingguanghuiye_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "yingguanghuiye_explore_1",
+                      "topic": "照明"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "yaowuxing",
+              "topic": "杳无形",
+              "children": [
+                {
+                  "id": "yaowuxing_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "yaowuxing_explore_1",
+                      "topic": "隐身"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "huangjinxi",
+              "topic": "黄金膝",
+              "children": [
+                {
+                  "id": "huangjinxi_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "huangjinxi_explore_1",
+                      "topic": "对镇守使用有概率直接通关"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "xiangxiezhaoying",
+              "topic": "相携照影",
+              "children": [
+                {
+                  "id": "xiangxiezhaoying_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "xiangxiezhaoying_explore_1",
+                      "topic": "侠缘专属奇术"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fenghuolun",
+              "topic": "风火抡",
+              "children": [
+                {
+                  "id": "fenghuolun_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "fenghuolun_explore_1",
+                      "topic": "师徒专属奇术"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "huashenweidun",
+              "topic": "化身为墩",
+              "children": [
+                {
+                  "id": "huashenweidun_explore",
+                  "topic": "探索",
+                  "children": [
+                    {
+                      "id": "huashenweidun_explore_1",
+                      "topic": "变身雪人"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "zhuangbei",
+          "topic": "装备",
+          "children": [
+            {
+              "id": "zhuangbei_goucheng",
+              "topic": "装备构成",
+              "children": [
+                {
+                  "id": "zhuangbei_goucheng_left",
+                  "topic": "左边四件（武器、环、佩）"
+                },
+                {
+                  "id": "zhuangbei_goucheng_right",
+                  "topic": "右边四件（头、胸甲、腿甲、腕甲）"
+                },
+                {
+                  "id": "zhuangbei_goucheng_gong",
+                  "topic": "弓（锻造获得）"
+                },
+                {
+                  "id": "zhuangbei_goucheng_shejue",
+                  "topic": "射玦（锻造获得）"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_cipin",
+              "topic": "词条品质",
+              "children": [
+                {
+                  "id": "zhuangbei_cipin_level",
+                  "topic": "初始词条：绿 < 蓝 < 紫 < 金（金色最好，不可改）"
+                },
+                {
+                  "id": "zhuangbei_cipin_grade",
+                  "topic": "等级对应：41/51/56为紫装，61以上为金装"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_tiaolv",
+              "topic": "调律系统",
+              "children": [
+                {
+                  "id": "zhuangbei_tiaolv_lv",
+                  "topic": "律准石（消耗品）"
+                },
+                {
+                  "id": "zhuangbei_tiaolv_zi",
+                  "topic": "紫狗粮（下一词条必紫或以上）"
+                },
+                {
+                  "id": "zhuangbei_tiaolv_jin",
+                  "topic": "金狗粮（下一词条必金或以上）"
+                },
+                {
+                  "id": "zhuangbei_tiaolv_cai",
+                  "topic": "彩狗粮（下一词条必金且满值）"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_qianqi",
+              "topic": "前期策略（非当前最高级装备）",
+              "children": [
+                {
+                  "id": "zhuangbei_qianqi_1",
+                  "topic": "刷满8件紫装即可调律"
+                },
+                {
+                  "id": "zhuangbei_qianqi_2",
+                  "topic": "用金狗粮升词条（不用在意是否有用，金色就行）"
+                },
+                {
+                  "id": "zhuangbei_qianqi_3",
+                  "topic": "进武库能吃满加成，不够就补弓/射玦"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_biye",
+              "topic": "毕业装备推荐（110级无名剑+无名枪）",
+              "children": [
+                {
+                  "id": "zhuangbei_biye_left",
+                  "topic": "左边四件",
+                  "children": [
+                    {
+                      "id": "zhuangbei_biye_left_zhu",
+                      "topic": "主词条：最大外功攻击"
+                    },
+                    {
+                      "id": "zhuangbei_biye_left_fu",
+                      "topic": "副词条：剑/枪武学增伤（上2）+ 全武学增效（下2）"
+                    }
+                  ]
+                },
+                {
+                  "id": "zhuangbei_biye_right",
+                  "topic": "右边四件",
+                  "children": [
+                    {
+                      "id": "zhuangbei_biye_right_zhu",
+                      "topic": "主词条：精准/会意/会心率（上2）+ 劲（下2）"
+                    },
+                    {
+                      "id": "zhuangbei_biye_right_fu",
+                      "topic": "副词条：对玩家/首领增效 或 单体/群体奇术增效"
+                    }
+                  ]
+                },
+                {
+                  "id": "zhuangbei_biye_note_1",
+                  "topic": "注意：一件装备最多只能有两条相同词条"
+                },
+                {
+                  "id": "zhuangbei_biye_note_2",
+                  "topic": "举例：两条最大外功攻击"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_mianban",
+              "topic": "面板要求",
+              "children": [
+                {
+                  "id": "zhuangbei_mianban_jingzhun",
+                  "topic": "精准率：最好100%"
+                },
+                {
+                  "id": "zhuangbei_mianban_hui",
+                  "topic": "会心/会意率：根据流派有不同要求"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_zhuanlv",
+              "topic": "转律",
+              "children": [
+                {
+                  "id": "zhuangbei_zhuanlv_1",
+                  "topic": "每件装备仅一次转律机会，每次需7天"
+                },
+                {
+                  "id": "zhuangbei_zhuanlv_2",
+                  "topic": "建议用彩狗粮（必金色满值）"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_chongzhi",
+              "topic": "重置调律",
+              "children": [
+                {
+                  "id": "zhuangbei_chongzhi_1",
+                  "topic": "出现两个无效词条时重置（仅保留初始词条）"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_dingyin",
+              "topic": "定音",
+              "children": [
+                {
+                  "id": "zhuangbei_dingyin_1",
+                  "topic": "普通定音：锁定武学相关加成"
+                },
+                {
+                  "id": "zhuangbei_dingyin_2",
+                  "topic": "消耗定音石+变音石可刷到满值"
+                }
+              ]
+            },
+            {
+              "id": "zhuangbei_chengyin",
+              "topic": "承音（91阶及以上紫/金装）",
+              "children": [
+                {
+                  "id": "zhuangbei_chengyin_1",
+                  "topic": "基础属性提升（如91→96阶）"
+                },
+                {
+                  "id": "zhuangbei_chengyin_2",
+                  "topic": "词条数值上限提升"
+                },
+                {
+                  "id": "zhuangbei_chengyin_3",
+                  "topic": "传家宝：完美词条可通过承音+传律继承"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dieyin",
+          "topic": "叠音",
+          "children": [
+            {
+              "id": "dieyin_1",
+              "topic": "能升就升"
+            }
+          ]
+        },
+        {
+          "id": "wuku",
+          "topic": "武库",
+          "children": [
+            {
+              "id": "wuku_level",
+              "topic": "装备品质等级",
+              "children": [
+                {
+                  "id": "wuku_level_1",
+                  "topic": "56级及以下：紫装最好"
+                },
+                {
+                  "id": "wuku_level_2",
+                  "topic": "61级及以上：金装最好"
+                }
+              ]
+            },
+            {
+              "id": "wuku_types",
+              "topic": "武库四大类型",
+              "children": [
+                {
+                  "id": "wuku_types_1",
+                  "topic": "鸣金"
+                },
+                {
+                  "id": "wuku_types_2",
+                  "topic": "牵丝"
+                },
+                {
+                  "id": "wuku_types_3",
+                  "topic": "破竹"
+                },
+                {
+                  "id": "wuku_types_4",
+                  "topic": "裂石"
+                }
+              ]
+            },
+            {
+              "id": "wuku_choose",
+              "topic": "根据流派选自己适配的"
+            },
+            {
+              "id": "wuku_role",
+              "topic": "主要作用：提高血量"
+            }
+          ]
+        },
+        {
+          "id": "tiangong",
+          "topic": "天工",
+          "children": [
+            {
+              "id": "tiangong_types",
+              "topic": "三种属性",
+              "children": [
+                {
+                  "id": "tiangong_types_1",
+                  "topic": "火"
+                },
+                {
+                  "id": "tiangong_types_2",
+                  "topic": "水"
+                },
+                {
+                  "id": "tiangong_types_3",
+                  "topic": "毒"
+                }
+              ]
+            },
+            {
+              "id": "tiangong_order",
+              "topic": "按顺序升就OK"
+            }
+          ]
+        },
+        {
+          "id": "tianfu",
+          "topic": "天赋",
+          "children": [
+            {
+              "id": "tianfu_order",
+              "topic": "按顺序升就OK"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gacha",
+      "topic": "抽卡",
+      "children": [
+        {
+          "id": "gacha_currency",
+          "topic": "抽卡货币",
+          "children": [
+            {
+              "id": "gacha_currency_1",
+              "topic": "长鸣珠（氪金获得，160:1换袅袅之音）→ 抽到可挂销金窟卖"
+            },
+            {
+              "id": "gacha_currency_2",
+              "topic": "长鸣玉（日常获得，160:1换绕梁之音）"
+            },
+            {
+              "id": "gacha_currency_3",
+              "topic": "袅袅之音绑（任务/活动获得，每周用长鸣玉换3抽！）→ 抽到只能自用，不能寄售"
+            },
+            {
+              "id": "gacha_currency_4",
+              "topic": "推荐每周用长鸣玉换满3抽袅袅之音绑！"
+            }
+          ]
+        },
+        {
+          "id": "gacha_pools",
+          "topic": "抽卡池类型",
+          "children": [
+            {
+              "id": "gacha_pools_1",
+              "topic": "限时池：大音希声（只能用袅袅之音/袅袅之音绑抽）"
+            },
+            {
+              "id": "gacha_pools_2",
+              "topic": "限时池：玉振扬音（只能用绕梁之音抽）"
+            },
+            {
+              "id": "gacha_pools_3",
+              "topic": "常驻池：金声长鸣（只能用绕梁之音抽，需先下200抽才能解锁玉池）"
+            }
+          ]
+        },
+        {
+          "id": "gacha_output",
+          "topic": "抽卡产出",
+          "children": [
+            {
+              "id": "gacha_output_1",
+              "topic": "八音窍（保底至少1颗，运气好可多出或提前出）"
+            },
+            {
+              "id": "gacha_output_2",
+              "topic": "和鸣大套（大音希声）= 2个八音窍"
+            },
+            {
+              "id": "gacha_output_3",
+              "topic": "不想要的和鸣大套可打开背包，选择换成两个八音窍"
+            }
+          ]
+        },
+        {
+          "id": "gacha_trade",
+          "topic": "销金窟（交易系统）",
+          "children": [
+            {
+              "id": "gacha_trade_1",
+              "topic": "需到开封才能开启"
+            },
+            {
+              "id": "gacha_trade_2",
+              "topic": "用宝钱交易"
+            },
+            {
+              "id": "gacha_trade_3",
+              "topic": "一个八音窍约3千多万宝钱"
+            },
+            {
+              "id": "gacha_trade_4",
+              "topic": "可挂卖：氪金袅袅之音抽到的物品"
+            },
+            {
+              "id": "gacha_trade_5",
+              "topic": "不可挂卖：袅袅之音绑抽到的物品（只能自用）"
+            },
+            {
+              "id": "gacha_trade_6",
+              "topic": "可挂卖和鸣大套等物品"
+            }
+          ]
+        },
+        {
+          "id": "gacha_extra",
+          "topic": "补充说明",
+          "children": [
+            {
+              "id": "gacha_extra_1",
+              "topic": "商店可查看往期兑换内容"
+            },
+            {
+              "id": "gacha_extra_2",
+              "topic": "地华商店：每月换1个袅袅之音绑"
+            },
+            {
+              "id": "gacha_extra_3",
+              "topic": "江湖百珍：每周换2个袅袅之音绑"
+            },
+            {
+              "id": "gacha_extra_4",
+              "topic": "每周不肝商店进度达到2w，解锁购买1个袅袅之音绑"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "topic": "不肝商店",
+      "children": [
+        {
+          "id": "shop_weekly",
+          "topic": "每周目标",
+          "children": [
+            {
+              "id": "shop_weekly_1",
+              "topic": "推荐每周进度做满2w3（很简单）"
+            },
+            {
+              "id": "shop_weekly_2",
+              "topic": "进度达到2w可解锁购买1个袅袅之音绑"
+            }
+          ]
+        },
+        {
+          "id": "shop_combat",
+          "topic": "战斗养成（推荐每周换掉）",
+          "children": [
+            {
+              "id": "shop_combat_1",
+              "topic": "奇术支援箱"
+            },
+            {
+              "id": "shop_combat_2",
+              "topic": "心法心得"
+            },
+            {
+              "id": "shop_combat_3",
+              "topic": "短陌钱"
+            },
+            {
+              "id": "shop_combat_4",
+              "topic": "武学心得（前期挺需要）"
+            }
+          ]
+        },
+        {
+          "id": "shop_business",
+          "topic": "营生养成",
+          "children": [
+            {
+              "id": "shop_business_1",
+              "topic": "营生手记（治病会用到）"
+            },
+            {
+              "id": "shop_business_2",
+              "topic": "悬壶礼盒（治病会用到）"
+            },
+            {
+              "id": "shop_business_3",
+              "topic": "文士礼盒（话术对战会用到）"
+            },
+            {
+              "id": "shop_business_4",
+              "topic": "路牌用处不大，但可以留作回忆"
+            }
+          ]
+        },
+        {
+          "id": "shop_season",
+          "topic": "赛季追赶",
+          "children": [
+            {
+              "id": "shop_season_1",
+              "topic": "装备追赶箱"
+            },
+            {
+              "id": "shop_season_2",
+              "topic": "妙音石追赶箱"
+            },
+            {
+              "id": "shop_season_3",
+              "topic": "定音石追赶箱"
+            },
+            {
+              "id": "shop_season_4",
+              "topic": "以上三个根据自己缺什么补什么，其他按需购买"
+            }
+          ]
+        },
+        {
+          "id": "shop_appearance",
+          "topic": "外观兑换",
+          "children": [
+            {
+              "id": "shop_appearance_1",
+              "topic": "可换衣服、配饰等"
+            }
+          ]
+        },
+        {
+          "id": "shop_equip",
+          "topic": "装备宝匣",
+          "children": [
+            {
+              "id": "shop_equip_1",
+              "topic": "41级后可买对应需要的装备箱"
+            },
+            {
+              "id": "shop_equip_2",
+              "topic": "这是获得对应等级装备的来源之一"
+            },
+            {
+              "id": "shop_equip_3",
+              "topic": "内含16阶和31阶装备箱（可用藏锋之意将武器变为外观配件，仅此用处）"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>百业-云间甜铺 · 登录</title>
+    <link rel="stylesheet" href="/static/common.css">
+    <style>
+        .login-box {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 248, 240, 0.5);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 48px 56px;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(100,70,50,0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            animation: loginBoxIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+        @keyframes loginBoxIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .login-box h1 {
+            font-size: 28px;
+            color: #4a3f35;
+            margin-bottom: 8px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .login-box .sub {
+            color: #7a6b5a;
+            font-size: 14px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid rgba(106,90,74,0.15);
+            padding-bottom: 16px;
+        }
+        .login-box input[type="text"] {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 18px;
+            border: 1px solid rgba(106,90,74,0.2);
+            border-radius: 16px;
+            background: rgba(255,255,255,0.5);
+            outline: none;
+            transition: 0.25s;
+            text-align: center;
+            letter-spacing: 4px;
+            font-weight: 500;
+            color: #3a322a;
+        }
+        .login-box input[type="text"]:focus {
+            border-color: #b8a088;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 0 0 4px rgba(180,140,100,0.15);
+        }
+        .login-box button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #9a8a7a, #8a7a6a);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 16px rgba(100,80,60,0.2);
+        }
+        .login-box button:hover {
+            background: linear-gradient(135deg, #8a7a6a, #6a5a4a);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(100,80,60,0.3);
+        }
+        .login-box button:active {
+            transform: scale(0.98);
+        }
+        .login-box .error {
+            color: #c0392b;
+            font-size: 14px;
+            margin-top: 16px;
+            background: rgba(192,57,43,0.08);
+            padding: 10px;
+            border-radius: 12px;
+            animation: shake 0.4s ease;
+        }
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        .login-box .watermark-mini {
+            margin-top: 28px;
+            font-size: 14px;
+            color: #a09080;
+            opacity: 0.6;
+            letter-spacing: 3px;
+            font-family: "华文楷体", "KaiTi", serif;
+            text-shadow: 0 0 15px rgba(180,150,120,0.3);
+        }
+        .login-box .hint {
+            font-size: 13px;
+            color: #9a8a7a;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div class="login-box">
+        <h1>🔑 百业·云间甜铺</h1>
+        <div class="sub">思维导图 · 专属入口</div>
+        <form method="POST">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            <input type="text" name="user_id" placeholder="请输入游戏数字ID" maxlength="10" autocomplete="off" required>
+            <button type="submit">进入</button>
+        </form>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <div class="hint">示例：0111111111</div>
+        <div class="watermark-mini">— 百业·云间甜铺 —</div>
+    </div>
+
+    <script src="/static/particles.js"></script>
+</body>
+</html>
