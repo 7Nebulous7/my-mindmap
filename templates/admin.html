@@ -275,7 +275,7 @@
 
     <!-- 顶部导航栏 -->
     <nav class="nav-bar">
-        <div class="nav-brand">🏯 百业·云间甜铺</div>
+        <a href="/" class="nav-brand" style="text-decoration:none;color:#4a3f35;">🏯 百业·云间甜铺</a>
         <div class="nav-right">
             {% if not logining %}
             <span class="nav-user">🔐 管理后台</span>
@@ -414,7 +414,7 @@
             {% endif %}
         </div>
 
-        <a href="{{ url_for('index') }}" class="back-link">← 返回思维导图</a>
+        <a href="{{ url_for('index') }}" class="back-link">← 返回门户</a>
         <a href="{{ url_for('admin_logout') }}" class="back-link" style="margin-left:12px; color:#c0392b;">退出管理</a>
     </div>
     {% endif %}

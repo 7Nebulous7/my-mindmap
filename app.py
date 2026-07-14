@@ -177,7 +177,14 @@ def index():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     user_name = session.get('user_name', '')
-    return render_template('index.html', data=load_mindmap_data(), user_name=user_name)
+    return render_template('index.html', user_name=user_name)
+
+@app.route('/mindmap')
+def mindmap():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_name = session.get('user_name', '')
+    return render_template('mindmap.html', data=load_mindmap_data(), user_name=user_name)
 
 @app.route('/login', methods=['GET', 'POST'])
 @csrf_protect
