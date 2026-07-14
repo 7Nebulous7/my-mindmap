@@ -337,7 +337,7 @@
         <div class="form-row">
             <form method="POST" style="display:flex; gap:12px; flex-wrap:wrap; width:100%;">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-                <input type="text" name="id" placeholder="输入10位数字ID" maxlength="10" required>
+                <input type="text" name="id" placeholder="昵称 10位ID（或仅填ID）" required>
                 <button type="submit" name="action" value="add" class="add-btn">➕ 添加授权</button>
                 <button type="submit" name="action" value="remove" class="remove-btn">➖ 移除授权</button>
             </form>
@@ -350,7 +350,7 @@
             </summary>
             <form method="POST" style="margin-top:12px;" onsubmit="return confirm('确定批量导入这些ID吗？已有ID会自动跳过。')">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-                <textarea name="bulk_ids" placeholder="每行一个10位数字ID&#10;例如：&#10;0100000001&#10;0100000002&#10;0100000003" rows="6" style="width:100%;padding:12px 16px;border:1px solid rgba(106,90,74,0.2);border-radius:16px;font-size:15px;font-family:'SF Mono','Consolas',monospace;background:rgba(255,255,255,0.6);resize:vertical;outline:none;transition:0.25s;color:#3a322a;"></textarea>
+                <textarea name="bulk_ids" placeholder="每行一条：昵称 10位ID&#10;例如：&#10;澹浮 0193044418&#10;小明 0100000001&#10;也可以只填ID不带昵称" rows="6" style="width:100%;padding:12px 16px;border:1px solid rgba(106,90,74,0.2);border-radius:16px;font-size:15px;font-family:'SF Mono','Consolas',monospace;background:rgba(255,255,255,0.6);resize:vertical;outline:none;transition:0.25s;color:#3a322a;"></textarea>
                 <button type="submit" name="action" value="bulk_import" class="add-btn" style="margin-top:10px;">📥 批量导入</button>
             </form>
         </details>
@@ -359,9 +359,9 @@
         <div class="list">
             <div class="list-header">已授权 ({{ ids|length }})</div>
             {% if ids %}
-                {% for id in ids %}
+                {% for entry in ids %}
                 <div class="list-item">
-                    <span>{{ id }}</span>
+                    <span>{% if entry.name %}{{ entry.name }} {% endif %}{{ entry.id }}</span>
                     <span class="badge">已授权</span>
                 </div>
                 {% endfor %}
@@ -378,7 +378,7 @@
                 <div class="log-group">
                     <div class="log-group-header" onclick="toggleGroup(this)">
                         <span class="arrow">▶</span>
-                        <span class="log-group-id">{{ uid }}</span>
+                        <span class="log-group-id">{% if entries[0].name %}{{ entries[0].name }} {% endif %}{{ uid }}</span>
                         <span class="log-group-count">{{ entries|length }}次</span>
                         <span class="log-group-latest">最新：{{ entries[0].time }}</span>
                     </div>

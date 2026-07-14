@@ -92,17 +92,43 @@ def save_json(filename, data):
             logger.error(f'保存文件失败: {filename} — {e}')
 
 def load_authorized_ids():
+    """返回 [{name, id}, ...], 自动兼容旧格式 ['id', ...]"""
     data = load_json(AUTH_FILE, {})
-    return data.get('ids', [])
+    ids = data.get('ids', [])
+    result = []
+    needs_migration = False
+    for item in ids:
+        if isinstance(item, dict):
+            result.append(item)
+        elif isinstance(item, str):
+            # 旧格式：纯ID字符串，自动迁移
+            result.append({'name': '', 'id': item})
+            needs_migration = True
+    if needs_migration:
+        save_authorized_ids(result)
+    return result
+
+def get_authorized_id_set():
+    """返回纯ID集合，用于快速查重和登录验证"""
+    return {entry['id'] for entry in load_authorized_ids()}
+
+def get_authorized_name(uid):
+    """根据ID查找昵称"""
+    for entry in load_authorized_ids():
+        if entry['id'] == uid:
+            return entry.get('name', '')
+    return ''
 
 def save_authorized_ids(ids):
+    """ids = [{name, id}, ...]"""
     save_json(AUTH_FILE, {'ids': ids})
 
-def log_login(user_id, ip):
-    logger.info(f'用户登录成功: ID={user_id}, IP={ip}')
+def log_login(user_id, user_name, ip):
+    logger.info(f'用户登录成功: 昵称={user_name}, ID={user_id}, IP={ip}')
     logs = load_json(LOG_FILE, [])
     logs.append({
         'id': user_id,
+        'name': user_name,
         'time': datetime.now(CN_TZ).strftime('%Y-%m-%d %H:%M:%S'),
         'ip': ip
     })
@@ -150,7 +176,8 @@ def load_mindmap_data():
 def index():
     if 'user_id' not in session:
         return redirect(url_for('login'))
-    return render_template('index.html', data=load_mindmap_data())
+    user_name = session.get('user_name', '')
+    return render_template('index.html', data=load_mindmap_data(), user_name=user_name)
 
 @app.route('/login', methods=['GET', 'POST'])
 @csrf_protect
@@ -172,15 +199,18 @@ def login():
             logger.info(f'登录失败(格式错误): ID={user_id}, IP={client_ip}')
             return render_template('login.html', error='❌ 请输入正确的10位数字ID')
         # 检查是否授权
-        if user_id not in load_authorized_ids():
+        auth_entries = load_authorized_ids()
+        matched = next((e for e in auth_entries if e['id'] == user_id), None)
+        if not matched:
             record_login_failure(client_ip)
             logger.info(f'登录失败(未授权): ID={user_id}, IP={client_ip}')
             return render_template('login.html', error='❌ 该ID未获得访问权限，请联系管理员')
         # 登录成功
         clear_login_failures(client_ip)
         session['user_id'] = user_id
+        session['user_name'] = matched.get('name', '')
         # 记录日志
-        log_login(user_id, client_ip)
+        log_login(user_id, matched.get('name', ''), client_ip)
         return redirect(url_for('index'))
     return render_template('login.html', error=None)
 
@@ -222,22 +252,43 @@ def admin():
         action = request.form.get('action')
         id_input = request.form.get('id', '').strip()
         if action == 'add' and id_input:
-            if id_input not in ids:
-                ids.append(id_input)
+            # 支持 "昵称 ID" 或纯 "ID"
+            parts = id_input.rsplit(None, 1)
+            if len(parts) == 2 and parts[1].isdigit() and len(parts[1]) == 10:
+                name, uid = parts[0], parts[1]
+            elif id_input.isdigit() and len(id_input) == 10:
+                name, uid = '', id_input
+            else:
+                name, uid = '', id_input
+            if uid.isdigit() and len(uid) == 10 and uid not in get_authorized_id_set():
+                ids.append({'name': name, 'id': uid})
                 save_authorized_ids(ids)
-                logger.warning(f'管理员添加授权ID: {id_input}')
+                logger.warning(f'管理员添加授权: {name} ({uid})')
         elif action == 'remove' and id_input:
-            if id_input in ids:
-                ids.remove(id_input)
-                save_authorized_ids(ids)
-                logger.warning(f'管理员移除授权ID: {id_input}')
+            # 按ID删除（支持输入昵称+ID，提取ID部分）
+            parts = id_input.rsplit(None, 1)
+            remove_id = parts[1] if len(parts) == 2 and parts[1].isdigit() and len(parts[1]) == 10 else id_input
+            ids = [e for e in ids if e['id'] != remove_id]
+            save_authorized_ids(ids)
+            logger.warning(f'管理员移除授权ID: {remove_id}')
         elif action == 'bulk_import':
             bulk_text = request.form.get('bulk_ids', '')
             added = 0
+            existing = get_authorized_id_set()
             for line in bulk_text.strip().splitlines():
-                uid = line.strip()
-                if uid.isdigit() and len(uid) == 10 and uid not in ids:
-                    ids.append(uid)
+                line = line.strip()
+                if not line:
+                    continue
+                parts = line.rsplit(None, 1)
+                if len(parts) == 2 and parts[1].isdigit() and len(parts[1]) == 10:
+                    name, uid = parts[0], parts[1]
+                elif line.isdigit() and len(line) == 10:
+                    name, uid = '', line
+                else:
+                    continue
+                if uid not in existing:
+                    ids.append({'name': name, 'id': uid})
+                    existing.add(uid)
                     added += 1
             if added:
                 save_authorized_ids(ids)
