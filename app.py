@@ -231,6 +231,17 @@ def admin():
                 ids.remove(id_input)
                 save_authorized_ids(ids)
                 logger.warning(f'管理员移除授权ID: {id_input}')
+        elif action == 'bulk_import':
+            bulk_text = request.form.get('bulk_ids', '')
+            added = 0
+            for line in bulk_text.strip().splitlines():
+                uid = line.strip()
+                if uid.isdigit() and len(uid) == 10 and uid not in ids:
+                    ids.append(uid)
+                    added += 1
+            if added:
+                save_authorized_ids(ids)
+                logger.warning(f'管理员批量导入 {added} 个授权ID')
         return redirect(url_for('admin'))
     # 显示授权列表和日志（按ID分组，每组最新在前）
     logs = load_json(LOG_FILE, [])

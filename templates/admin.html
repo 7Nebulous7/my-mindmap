@@ -343,6 +343,18 @@
             </form>
         </div>
 
+        <!-- 批量导入 -->
+        <details style="margin-bottom: 24px;">
+            <summary style="cursor:pointer; color:#8a7a6a; font-size:14px; font-weight:600; padding:4px 0;">
+                📋 批量导入ID（展开）
+            </summary>
+            <form method="POST" style="margin-top:12px;" onsubmit="return confirm('确定批量导入这些ID吗？已有ID会自动跳过。')">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+                <textarea name="bulk_ids" placeholder="每行一个10位数字ID&#10;例如：&#10;0100000001&#10;0100000002&#10;0100000003" rows="6" style="width:100%;padding:12px 16px;border:1px solid rgba(106,90,74,0.2);border-radius:16px;font-size:15px;font-family:'SF Mono','Consolas',monospace;background:rgba(255,255,255,0.6);resize:vertical;outline:none;transition:0.25s;color:#3a322a;"></textarea>
+                <button type="submit" name="action" value="bulk_import" class="add-btn" style="margin-top:10px;">📥 批量导入</button>
+            </form>
+        </details>
+
         <!-- 当前授权列表 -->
         <div class="list">
             <div class="list-header">已授权 ({{ ids|length }})</div>
