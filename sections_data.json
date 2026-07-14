@@ -2,23 +2,24 @@
   "jianghu": {
     "name": "江湖风云录",
     "icon": "🗺️",
-    "desc": "主线·镇守 · 侠迹·奇遇 · 地图·百景",
+    "desc": "镇守boss · 野外boss · 侠迹·奇遇 · 地图·百景",
     "topics": [
       {
-        "id": "main-quest",
-        "title": "主线·镇守",
+        "id": "boss",
+        "title": "镇守boss",
         "subs": [
-          {"title": "第一章", "entries": []},
-          {"title": "第二章", "entries": []},
-          {"title": "第三章", "entries": []},
-          {"title": "第四章", "entries": []},
-          {"title": "第五章", "entries": []},
-          {"title": "第六章", "entries": []},
-          {"title": "第七章", "entries": []},
-          {"title": "第八章", "entries": []},
-          {"title": "第九章", "entries": []},
-          {"title": "第十章", "entries": []}
+          {"title": "清河boss", "entries": ["寻心", "叶万山", "无相皇", "小十七", "千夜", "田英"]},
+          {"title": "开封boss", "entries": ["道主", "郑鄂", "容鸢", "河伯", "黑财神", "南烛公子"]},
+          {"title": "河西boss", "entries": ["郭昕", "五残", "镇关吼", "月中师", "赤鲤公", "帷帽女"]},
+          {"title": "不见山boss", "entries": ["张万师", "打更人", "青", "鹏", "萧翰"]},
+          {"title": "开封皇宫boss", "entries": ["封桩库", "束罪阁"]},
+          {"title": "青州boss", "entries": []}
         ]
+      },
+      {
+        "id": "wild-boss",
+        "title": "野外boss",
+        "subs": []
       },
       {
         "id": "side-quest",
