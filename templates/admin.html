@@ -130,7 +130,6 @@
             background: rgba(255,252,248,0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
-        .list-item span { font-family: "SF Mono", "Consolas", monospace; font-size: 16px; color: #3a322a; letter-spacing: 1px; }
         .badge {
             background: linear-gradient(135deg, #8a7a6a, #6a5a4a);
             color: #fff;
@@ -139,6 +138,34 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
+        }
+        .edit-name-btn {
+            background: none;
+            border: 1px solid rgba(180,150,120,0.2);
+            color: #8a7a6a;
+            padding: 2px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.2s;
+            margin-left: 4px;
+        }
+        .edit-name-btn:hover {
+            background: rgba(200,180,150,0.15);
+            border-color: rgba(180,150,120,0.4);
+        }
+        .id-display {
+            font-family: "SF Mono", "Consolas", monospace;
+            font-size: 16px;
+            color: #3a322a;
+            letter-spacing: 1px;
+        }
+        .name-part {
+            color: #6a5a4a;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        .id-part {
+            color: #3a322a;
         }
 
         .log-section { margin-top: 32px; border-top: 1px solid rgba(106,90,74,0.1); padding-top: 22px; }
@@ -373,8 +400,12 @@
             {% if ids %}
                 {% for entry in ids %}
                 <div class="list-item">
-                    <span>{% if entry.name %}{{ entry.name }} {% endif %}{{ entry.id }}</span>
+                    <span class="id-display">
+                        <span class="name-part">{% if entry.name %}{{ entry.name }} {% endif %}</span>
+                        <span class="id-part">{{ entry.id }}</span>
+                    </span>
                     <span class="badge">已授权</span>
+                    <button class="edit-name-btn" onclick="startEdit(this, '{{ entry.id }}')" title="修改昵称">✏️</button>
                 </div>
                 {% endfor %}
             {% else %}
@@ -431,6 +462,46 @@
                 arrow.classList.add('open');
                 detail.classList.add('open');
             }
+        }
+
+        function startEdit(btn, entryId) {
+            const item = btn.closest('.list-item');
+            const display = item.querySelector('.id-display');
+            const nameEl = display.querySelector('.name-part');
+            const currentName = nameEl ? nameEl.textContent.trim() : '';
+
+            // 替换为输入框
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.style.display = 'flex';
+            form.style.gap = '8px';
+            form.style.alignItems = 'center';
+
+            const csrf = document.querySelector('input[name="_csrf_token"]').value;
+            form.innerHTML = `
+                <input type="hidden" name="_csrf_token" value="${csrf}">
+                <input type="hidden" name="action" value="rename">
+                <input type="hidden" name="id" value="${entryId}">
+                <input type="text" name="new_name" value="${currentName}" placeholder="新昵称"
+                    style="padding:4px 10px;border:1px solid rgba(106,90,74,0.3);border-radius:10px;font-size:14px;width:100px;background:rgba(255,255,255,0.8);outline:none;color:#3a322a;">
+                <button type="submit" style="background:#9a8a7a;color:#fff;border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px;">保存</button>
+                <button type="button" onclick="cancelEdit(this, '${currentName}', '${entryId}')" style="background:none;border:1px solid rgba(180,150,120,0.2);border-radius:8px;padding:4px 8px;cursor:pointer;font-size:12px;color:#8a7a6a;">取消</button>
+            `;
+
+            display.replaceWith(form);
+            btn.style.display = 'none';
+        }
+
+        function cancelEdit(btn, oldName, entryId) {
+            const form = btn.closest('form');
+            const item = form.closest('.list-item');
+            const span = document.createElement('span');
+            span.className = 'id-display';
+            span.innerHTML = oldName
+                ? `<span class="name-part">${oldName} </span><span class="id-part">${entryId}</span>`
+                : `<span class="id-part">${entryId}</span>`;
+            form.replaceWith(span);
+            item.querySelector('.edit-name-btn').style.display = '';
         }
     </script>
     <script src="/static/particles.js"></script>

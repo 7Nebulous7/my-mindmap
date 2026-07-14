@@ -368,7 +368,8 @@ def admin():
         elif action == 'bulk_import':
             bulk_text = request.form.get('bulk_ids', '')
             added = 0
-            existing = get_authorized_id_set()
+            updated = 0
+            existing_map = {e['id']: e for e in ids}
             for line in bulk_text.strip().splitlines():
                 line = line.strip()
                 if not line:
@@ -380,13 +381,26 @@ def admin():
                     name, uid = '', line
                 else:
                     continue
-                if uid not in existing:
+                if uid in existing_map:
+                    if name and existing_map[uid].get('name', '') != name:
+                        existing_map[uid]['name'] = name
+                        updated += 1
+                else:
                     ids.append({'name': name, 'id': uid})
-                    existing.add(uid)
+                    existing_map[uid] = {'name': name, 'id': uid}
                     added += 1
-            if added:
+            if added or updated:
                 save_authorized_ids(ids)
-                logger.warning(f'管理员批量导入 {added} 个授权ID')
+                logger.warning(f'管理员批量导入: 新增{added}个, 更新昵称{updated}个')
+        elif action == 'rename':
+            rename_id = request.form.get('id', '').strip()
+            new_name = request.form.get('new_name', '').strip()
+            for entry in ids:
+                if entry['id'] == rename_id:
+                    entry['name'] = new_name
+                    save_authorized_ids(ids)
+                    logger.info(f'管理员修改昵称: ID={rename_id} → {new_name}')
+                    break
         return redirect(url_for('admin'))
     # 显示授权列表和日志（按ID分组，每组最新在前）
     logs = load_json(LOG_FILE, [])
