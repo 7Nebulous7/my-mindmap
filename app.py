@@ -194,12 +194,12 @@ def convert_mindmap_to_guide():
                 if child.get('children'):
                     sections.append({
                         'title': child['topic'],
-                        'items': [item['topic'] for item in child['children']]
+                        'entries': [item['topic'] for item in child['children']]
                     })
                 else:
                     if not sections:
-                        sections.append({'title': '', 'items': []})
-                    sections[0]['items'].append(child['topic'])
+                        sections.append({'title': '', 'entries': []})
+                    sections[0]['entries'].append(child['topic'])
             topics.append({
                 'id': topic_node['id'],
                 'title': topic_node['topic'],

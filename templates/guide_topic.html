@@ -198,8 +198,8 @@
                     <div class="section-title">{{ section.title }}</div>
                     {% endif %}
                     <div class="{% if section.title %}section-items{% else %}plain-items{% endif %}">
-                        {% for item in section.items %}
-                        <span class="item-tag">{{ item }}</span>
+                        {% for entry in section.entries %}
+                        <span class="item-tag">{{ entry }}</span>
                         {% endfor %}
                     </div>
                 </div>
