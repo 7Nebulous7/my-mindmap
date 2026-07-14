@@ -196,35 +196,92 @@
             cursor: default;
             user-select: none;
         }
-        .boss-name.has-detail {
+        .boss-name.clickable {
             cursor: pointer;
         }
-        .boss-name.has-detail:hover {
+        .boss-name.clickable:hover {
             background: rgba(200,180,150,0.08);
+            color: #8a6a4a;
         }
-        .boss-arrow {
-            font-size: 10px;
-            color: #a09080;
-            transition: transform 0.3s ease;
-            display: inline-block;
-            width: 14px;
-            text-align: center;
+
+        /* ---------- 弹窗浮层 ---------- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 20000;
+            background: rgba(60,40,20,0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
         }
-        .boss-arrow.open {
-            transform: rotate(90deg);
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
         }
-        .boss-detail {
-            display: none;
-            padding: 6px 14px 14px 28px;
+        .modal-card {
+            background: rgba(255,250,245,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 20px 60px rgba(100,70,50,0.25), inset 0 1px 0 rgba(255,255,255,0.6);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(20px) scale(0.96);
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
         }
-        .boss-detail.open {
-            display: block;
+        .modal-overlay.show .modal-card {
+            transform: translateY(0) scale(1);
         }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px 14px;
+            border-bottom: 1px solid rgba(180,150,120,0.12);
+            flex-shrink: 0;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #4a3f35;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .modal-close {
+            background: rgba(255,248,240,0.6);
+            border: 1px solid rgba(180,150,120,0.2);
+            color: #8a7a6a;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            background: rgba(255,248,240,0.9);
+            color: #4a3f35;
+        }
+        .modal-body {
+            padding: 18px 24px 24px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
         .bd-intro {
             font-size: 13px;
             color: #5a4a3a;
             line-height: 1.7;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
         .bd-phase {
             margin-bottom: 12px;
@@ -249,14 +306,14 @@
             background: rgba(200,180,150,0.1);
             padding: 6px 12px;
             border-radius: 8px;
-            margin-top: 8px;
+            margin-top: 10px;
             line-height: 1.6;
         }
         .bd-loot {
             font-size: 13px;
             color: #6a5a4a;
-            margin-top: 8px;
-            padding-top: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
             border-top: 1px solid rgba(180,150,120,0.15);
         }
 
@@ -318,34 +375,34 @@
                                 {% for e in sub.entries %}
                                 {% set is_dict = e is mapping %}
                                 {% set has_detail = is_dict and e.get('detail') %}
-                                {% set detail_is_dict = has_detail and e.detail is mapping %}
                                 <div class="boss-row">
-                                    <div class="boss-name{% if has_detail %} has-detail{% endif %}" {% if has_detail %}onclick="toggleBoss(this)"{% endif %}>
-                                        {% if has_detail %}<span class="boss-arrow">▶</span>{% endif %}
+                                    <div class="boss-name{% if has_detail %} clickable{% endif %}" {% if has_detail %}onclick="openBossModal(this)"{% endif %}>
                                         {{ e.name if is_dict else e }}
                                     </div>
-                                    {% if detail_is_dict %}
-                                    <div class="boss-detail">
-                                        {% if e.detail.intro %}
-                                        <div class="bd-intro">{{ e.detail.intro }}</div>
-                                        {% endif %}
-                                        {% for phase in e.detail.phases %}
-                                        <div class="bd-phase">
-                                            <div class="bd-phase-title">{{ phase.title }}</div>
-                                            {% for skill in phase.skills %}
-                                            <div class="bd-skill">{{ skill }}</div>
+                                    {% if has_detail %}
+                                    <div class="boss-detail-data" style="display:none;">
+                                        {% if e.detail is mapping %}
+                                            {% if e.detail.intro %}
+                                            <div class="bd-intro">{{ e.detail.intro }}</div>
+                                            {% endif %}
+                                            {% for phase in e.detail.phases %}
+                                            <div class="bd-phase">
+                                                <div class="bd-phase-title">{{ phase.title }}</div>
+                                                {% for skill in phase.skills %}
+                                                <div class="bd-skill">{{ skill }}</div>
+                                                {% endfor %}
+                                            </div>
                                             {% endfor %}
-                                        </div>
-                                        {% endfor %}
-                                        {% if e.detail.tip %}
-                                        <div class="bd-tip">💡 {{ e.detail.tip }}</div>
-                                        {% endif %}
-                                        {% if e.detail.loot %}
-                                        <div class="bd-loot">🎒 掉落：{{ e.detail.loot }}</div>
+                                            {% if e.detail.tip %}
+                                            <div class="bd-tip">💡 {{ e.detail.tip }}</div>
+                                            {% endif %}
+                                            {% if e.detail.loot %}
+                                            <div class="bd-loot">🎒 掉落：{{ e.detail.loot }}</div>
+                                            {% endif %}
+                                        {% else %}
+                                            <div style="font-size:13px;color:#5a4a3a;line-height:1.7;white-space:pre-wrap;">{{ e.detail }}</div>
                                         {% endif %}
                                     </div>
-                                    {% elif has_detail and e.detail is string %}
-                                    <div class="boss-detail" style="font-size:13px;color:#5a4a3a;line-height:1.7;white-space:pre-wrap;">{{ e.detail }}</div>
                                     {% endif %}
                                 </div>
                                 {% endfor %}
@@ -361,6 +418,17 @@
             </div>
         </div>
         {% endfor %}
+    </div>
+
+    <!-- 弹窗浮层 -->
+    <div class="modal-overlay" id="bossModal" onclick="closeBossModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <span class="modal-title" id="modalTitle"></span>
+                <button class="modal-close" onclick="closeBossModal()">✕ 关闭</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
     </div>
 
     <div class="footer-bar">© 百业·云间甜铺 · 燕云十六声玩家社区</div>
@@ -394,19 +462,29 @@
             }
         }
 
-        function toggleBoss(nameEl) {
-            const arrow = nameEl.querySelector('.boss-arrow');
-            const body = nameEl.nextElementSibling;
-            if (!body) return;
-            const isOpen = body.classList.contains('open');
-            if (isOpen) {
-                if (arrow) arrow.classList.remove('open');
-                body.classList.remove('open');
-            } else {
-                if (arrow) arrow.classList.add('open');
-                body.classList.add('open');
-            }
+        function openBossModal(nameEl) {
+            const bossRow = nameEl.closest('.boss-row');
+            const detailData = bossRow.querySelector('.boss-detail-data');
+            if (!detailData) return;
+
+            const bossName = nameEl.textContent.trim();
+            document.getElementById('modalTitle').innerHTML = '⚔️ ' + bossName;
+            document.getElementById('modalBody').innerHTML = detailData.innerHTML;
+            document.getElementById('bossModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeBossModal(e) {
+            if (e && e.target !== document.getElementById('bossModal')) return;
+            document.getElementById('bossModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBossModal();
+            }
+        });
     </script>
 
 </body>
