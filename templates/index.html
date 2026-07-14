@@ -11,7 +11,8 @@
         /* ---------- 思维导图容器 (毛玻璃) ---------- */
         #jsmind_container {
             width: 92%;
-            height: 90%;
+            height: calc(100vh - 80px);
+            margin-top: 52px;
             background: rgba(255,248,240,0.35);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
@@ -67,32 +68,6 @@
         }
         @media (max-width: 640px) {
             .watermark { font-size:16px; bottom:16px; right:16px; opacity:0.25; letter-spacing:2px; transform:rotate(-4deg); }
-        }
-
-        /* ---------- 退出登录按钮 ---------- */
-        .logout-btn {
-            position: fixed;
-            top: 24px;
-            right: 30px;
-            z-index: 10000;
-            background: rgba(255,248,240,0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            padding: 8px 20px;
-            border-radius: 40px;
-            border: 1px solid rgba(106,90,74,0.15);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            text-decoration: none;
-            color: #6a5a4a;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.25s ease;
-        }
-        .logout-btn:hover {
-            background: rgba(255,248,240,0.85);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            transform: translateY(-1px);
         }
 
         /* ---------- 节点样式 ---------- */
@@ -153,13 +128,16 @@
 
     <canvas id="particles"></canvas>
 
-    <!-- 退出登录按钮 -->
-    <div style="position:fixed;top:24px;right:30px;z-index:10000;display:flex;align-items:center;gap:12px;">
-        {% if user_name %}
-        <span style="color:#6a5a4a;font-size:14px;font-weight:500;text-shadow:0 0 10px rgba(180,150,120,0.3);">👋 {{ user_name }}</span>
-        {% endif %}
-        <a href="/logout" class="logout-btn">🚪 退出登录</a>
-    </div>
+    <!-- 顶部导航栏 -->
+    <nav class="nav-bar">
+        <div class="nav-brand">🏯 百业·云间甜铺</div>
+        <div class="nav-right">
+            {% if user_name %}
+            <span class="nav-user">👋 {{ user_name }}</span>
+            {% endif %}
+            <a href="/logout" class="nav-link">🚪 退出登录</a>
+        </div>
+    </nav>
 
     <!-- 思维导图容器 -->
     <div id="jsmind_container"></div>

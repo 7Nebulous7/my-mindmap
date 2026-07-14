@@ -272,6 +272,17 @@
 <body>
     <canvas id="particles"></canvas>
 
+    <!-- 顶部导航栏 -->
+    <nav class="nav-bar">
+        <div class="nav-brand">🏯 百业·云间甜铺</div>
+        <div class="nav-right">
+            {% if not logining %}
+            <span class="nav-user">🔐 管理后台</span>
+            <a href="{{ url_for('admin_logout') }}" class="nav-link" style="color:#c0392b;">退出管理</a>
+            {% endif %}
+        </div>
+    </nav>
+
     {% if logining %}
     <!-- 管理员登录 -->
     <style>

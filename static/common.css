@@ -47,3 +47,55 @@ body::before {
     z-index: 0;
     pointer-events: none;
 }
+
+/* ---------- 顶部导航栏 ---------- */
+.nav-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 52px;
+    z-index: 10000;
+    background: rgba(255,248,240,0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(180,150,120,0.15);
+    box-shadow: 0 2px 20px rgba(100,70,50,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+}
+.nav-brand {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4a3f35;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.nav-user {
+    font-size: 14px;
+    color: #6a5a4a;
+    font-weight: 500;
+}
+.nav-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6a5a4a;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(255,248,240,0.5);
+    border: 1px solid rgba(106,90,74,0.12);
+    transition: all 0.2s ease;
+}
+.nav-link:hover {
+    background: rgba(255,248,240,0.85);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+}
