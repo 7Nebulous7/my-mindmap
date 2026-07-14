@@ -8,11 +8,41 @@
         "id": "boss",
         "title": "镇守boss",
         "subs": [
-          {"title": "清河boss", "entries": ["寻心", "叶万山", "无相皇", "小十七", "千夜", "田英"]},
-          {"title": "开封boss", "entries": ["道主", "郑鄂", "容鸢", "河伯", "黑财神", "南烛公子"]},
-          {"title": "河西boss", "entries": ["郭昕", "五残", "镇关吼", "月中师", "赤鲤公", "帷帽女"]},
-          {"title": "不见山boss", "entries": ["张万师", "打更人", "青", "鹏", "萧翰"]},
-          {"title": "开封皇宫boss", "entries": ["封桩库", "束罪阁"]},
+          {"title": "清河boss", "entries": [
+            {"name": "寻心", "detail": ""},
+            {"name": "叶万山", "detail": ""},
+            {"name": "无相皇", "detail": ""},
+            {"name": "小十七", "detail": ""},
+            {"name": "千夜", "detail": ""},
+            {"name": "田英", "detail": ""}
+          ]},
+          {"title": "开封boss", "entries": [
+            {"name": "道主", "detail": ""},
+            {"name": "郑鄂", "detail": ""},
+            {"name": "容鸢", "detail": ""},
+            {"name": "河伯", "detail": ""},
+            {"name": "黑财神", "detail": ""},
+            {"name": "南烛公子", "detail": ""}
+          ]},
+          {"title": "河西boss", "entries": [
+            {"name": "郭昕", "detail": ""},
+            {"name": "五残", "detail": ""},
+            {"name": "镇关吼", "detail": ""},
+            {"name": "月中师", "detail": ""},
+            {"name": "赤鲤公", "detail": ""},
+            {"name": "帷帽女", "detail": ""}
+          ]},
+          {"title": "不见山boss", "entries": [
+            {"name": "张万师", "detail": ""},
+            {"name": "打更人", "detail": ""},
+            {"name": "青", "detail": ""},
+            {"name": "鹏", "detail": ""},
+            {"name": "萧翰", "detail": ""}
+          ]},
+          {"title": "开封皇宫boss", "entries": [
+            {"name": "封桩库", "detail": ""},
+            {"name": "束罪阁", "detail": ""}
+          ]},
           {"title": "青州boss", "entries": []}
         ]
       },

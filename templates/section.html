@@ -174,19 +174,55 @@
             display: block;
         }
 
-        .entry-tags {
+        .entry-list {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 6px;
         }
-        .entry-tag {
-            background: rgba(255,252,248,0.8);
-            border: 1px solid rgba(180,150,120,0.15);
-            padding: 5px 12px;
+        .boss-row {
+            background: rgba(255,252,248,0.6);
+            border: 1px solid rgba(180,150,120,0.12);
             border-radius: 10px;
+            overflow: hidden;
+        }
+        .boss-name {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4a3f35;
+            cursor: default;
+            user-select: none;
+        }
+        .boss-name.has-detail {
+            cursor: pointer;
+        }
+        .boss-name.has-detail:hover {
+            background: rgba(200,180,150,0.08);
+        }
+        .boss-arrow {
+            font-size: 10px;
+            color: #a09080;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            width: 14px;
+            text-align: center;
+        }
+        .boss-arrow.open {
+            transform: rotate(90deg);
+        }
+        .boss-detail {
+            display: none;
+            padding: 0 14px 12px 28px;
             font-size: 13px;
             color: #5a4a3a;
-            line-height: 1.5;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+        .boss-detail.open {
+            display: block;
         }
 
         .empty-hint {
@@ -243,9 +279,23 @@
                         </div>
                         {% if sub.entries %}
                         <div class="sub-card-body">
-                            <div class="entry-tags">
+                            <div class="entry-list">
                                 {% for e in sub.entries %}
-                                <span class="entry-tag">{{ e }}</span>
+                                {% set is_dict = e is mapping %}
+                                {% set has_content = is_dict and e.detail and e.detail|trim|length > 0 %}
+                                <div class="boss-row">
+                                    <div class="boss-name{% if has_content %} has-detail{% endif %}" {% if has_content %}onclick="toggleBoss(this)"{% endif %}>
+                                        {% if is_dict %}
+                                            {% if has_content %}<span class="boss-arrow">▶</span>{% endif %}
+                                            {{ e.name }}
+                                        {% else %}
+                                            {{ e }}
+                                        {% endif %}
+                                    </div>
+                                    {% if has_content %}
+                                    <div class="boss-detail">{{ e.detail }}</div>
+                                    {% endif %}
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>
@@ -288,6 +338,20 @@
                 body.classList.remove('open');
             } else {
                 arrow.classList.add('open');
+                body.classList.add('open');
+            }
+        }
+
+        function toggleBoss(nameEl) {
+            const arrow = nameEl.querySelector('.boss-arrow');
+            const body = nameEl.nextElementSibling;
+            if (!body) return;
+            const isOpen = body.classList.contains('open');
+            if (isOpen) {
+                if (arrow) arrow.classList.remove('open');
+                body.classList.remove('open');
+            } else {
+                if (arrow) arrow.classList.add('open');
                 body.classList.add('open');
             }
         }
