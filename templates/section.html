@@ -215,14 +215,49 @@
         }
         .boss-detail {
             display: none;
-            padding: 0 14px 12px 28px;
-            font-size: 13px;
-            color: #5a4a3a;
-            line-height: 1.7;
-            white-space: pre-wrap;
+            padding: 6px 14px 14px 28px;
         }
         .boss-detail.open {
             display: block;
+        }
+        .bd-intro {
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .bd-phase {
+            margin-bottom: 12px;
+        }
+        .bd-phase-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #8a6a4a;
+            margin-bottom: 4px;
+        }
+        .bd-skill {
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.6;
+            padding: 2px 0 2px 12px;
+            border-left: 2px solid rgba(180,150,120,0.2);
+            margin-bottom: 2px;
+        }
+        .bd-tip {
+            font-size: 12px;
+            color: #8a7a6a;
+            background: rgba(200,180,150,0.1);
+            padding: 6px 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        .bd-loot {
+            font-size: 13px;
+            color: #6a5a4a;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(180,150,120,0.15);
         }
 
         .empty-hint {
@@ -282,18 +317,35 @@
                             <div class="entry-list">
                                 {% for e in sub.entries %}
                                 {% set is_dict = e is mapping %}
-                                {% set has_content = is_dict and e.detail and e.detail|trim|length > 0 %}
+                                {% set has_detail = is_dict and e.get('detail') %}
+                                {% set detail_is_dict = has_detail and e.detail is mapping %}
                                 <div class="boss-row">
-                                    <div class="boss-name{% if has_content %} has-detail{% endif %}" {% if has_content %}onclick="toggleBoss(this)"{% endif %}>
-                                        {% if is_dict %}
-                                            {% if has_content %}<span class="boss-arrow">▶</span>{% endif %}
-                                            {{ e.name }}
-                                        {% else %}
-                                            {{ e }}
+                                    <div class="boss-name{% if has_detail %} has-detail{% endif %}" {% if has_detail %}onclick="toggleBoss(this)"{% endif %}>
+                                        {% if has_detail %}<span class="boss-arrow">▶</span>{% endif %}
+                                        {{ e.name if is_dict else e }}
+                                    </div>
+                                    {% if detail_is_dict %}
+                                    <div class="boss-detail">
+                                        {% if e.detail.intro %}
+                                        <div class="bd-intro">{{ e.detail.intro }}</div>
+                                        {% endif %}
+                                        {% for phase in e.detail.phases %}
+                                        <div class="bd-phase">
+                                            <div class="bd-phase-title">{{ phase.title }}</div>
+                                            {% for skill in phase.skills %}
+                                            <div class="bd-skill">{{ skill }}</div>
+                                            {% endfor %}
+                                        </div>
+                                        {% endfor %}
+                                        {% if e.detail.tip %}
+                                        <div class="bd-tip">💡 {{ e.detail.tip }}</div>
+                                        {% endif %}
+                                        {% if e.detail.loot %}
+                                        <div class="bd-loot">🎒 掉落：{{ e.detail.loot }}</div>
                                         {% endif %}
                                     </div>
-                                    {% if has_content %}
-                                    <div class="boss-detail">{{ e.detail }}</div>
+                                    {% elif has_detail and e.detail is string %}
+                                    <div class="boss-detail" style="font-size:13px;color:#5a4a3a;line-height:1.7;white-space:pre-wrap;">{{ e.detail }}</div>
                                     {% endif %}
                                 </div>
                                 {% endfor %}
