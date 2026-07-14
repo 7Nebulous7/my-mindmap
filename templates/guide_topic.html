@@ -228,7 +228,8 @@
                             </div>
                         </div>
                         {% endfor %}
-                    {% else %}
+                    {% endif %}
+                    {% if section.entries %}
                     <div class="{% if section.title %}section-items{% else %}plain-items{% endif %}">
                         {% for entry in section.entries %}
                         <span class="item-tag">{{ entry }}</span>
