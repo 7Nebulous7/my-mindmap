@@ -10,7 +10,7 @@
         body {
             flex-direction: column;
             justify-content: flex-start;
-            align-items: stretch;
+            align-items: center;
             gap: 20px;
             padding-top: 70px;
             padding-bottom: 50px;
@@ -23,7 +23,7 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            max-width: 800px;
+            max-width: 750px;
             width: 90%;
             animation: fadeInUp 0.5s ease both;
         }
@@ -55,12 +55,14 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 14px;
             max-width: 750px;
             width: 90%;
         }
 
         .topic-card {
+            width: 100%;
             background: rgba(255,248,240,0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -140,6 +142,20 @@
             margin-bottom: 6px;
             padding-left: 4px;
         }
+        .subsection {
+            margin-bottom: 12px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(180,150,120,0.15);
+        }
+        .subsection:last-child {
+            margin-bottom: 0;
+        }
+        .subsection-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #7a6b5a;
+            margin-bottom: 5px;
+        }
         .section-items {
             display: flex;
             flex-wrap: wrap;
@@ -201,11 +217,24 @@
                     {% if section.title %}
                     <div class="section-title">{{ section.title }}</div>
                     {% endif %}
+                    {% if section.subsections %}
+                        {% for sub in section.subsections %}
+                        <div class="subsection">
+                            <div class="subsection-title">{{ sub.title }}</div>
+                            <div class="section-items">
+                                {% for entry in sub.entries %}
+                                <span class="item-tag">{{ entry }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
                     <div class="{% if section.title %}section-items{% else %}plain-items{% endif %}">
                         {% for entry in section.entries %}
                         <span class="item-tag">{{ entry }}</span>
                         {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>

@@ -191,15 +191,30 @@ def convert_mindmap_to_guide():
         for topic_node in cat_node.get('children', []):
             sections = []
             for child in topic_node.get('children', []):
-                if child.get('children'):
-                    sections.append({
-                        'title': child['topic'],
-                        'entries': [item['topic'] for item in child['children']]
-                    })
-                else:
+                grandchildren = child.get('children', [])
+                if not grandchildren:
+                    # 叶子节点：直接条目
                     if not sections:
                         sections.append({'title': '', 'entries': []})
                     sections[0]['entries'].append(child['topic'])
+                elif grandchildren[0].get('children'):
+                    # 有子栏目的节点（如 太极 → 探索/战斗 → 具体条目）
+                    subs = []
+                    for gc in grandchildren:
+                        subs.append({
+                            'title': gc['topic'],
+                            'entries': [item['topic'] for item in gc.get('children', [])]
+                        })
+                    sections.append({
+                        'title': child['topic'],
+                        'subsections': subs
+                    })
+                else:
+                    # 普通分组节点（如 官配流派 → 10个流派条目）
+                    sections.append({
+                        'title': child['topic'],
+                        'entries': [item['topic'] for item in grandchildren]
+                    })
             topics.append({
                 'id': topic_node['id'],
                 'title': topic_node['topic'],
