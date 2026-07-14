@@ -21,6 +21,11 @@
             padding: 8px;
             position: relative;
             z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #jsmind_container.ready {
+            opacity: 1;
         }
 
         /* ---------- 滚动条美化 ---------- */
@@ -185,7 +190,25 @@
         const jm = new jsMind(options);
         jm.show(mindData);
 
-        // ---------- 展开/折叠动画监听 ----------
+        // 折叠所有子节点，完成后渐显容器
+        setTimeout(function() {
+            const root = jm.get_root();
+            function collapseAllChildren(node) {
+                if (node && node.children) {
+                    node.children.forEach(function(child) {
+                        jm.collapse_node(child.id);
+                        collapseAllChildren(child);
+                    });
+                }
+            }
+            collapseAllChildren(root);
+            // 折叠完成后渐显
+            setTimeout(function() {
+                document.getElementById('jsmind_container').classList.add('ready');
+            }, 100);
+        }, 100);
+
+        // 展开节点时淡入动画
         jm.add_event_listener(function(type, data) {
             if (type === 1 && data.evt === 'expand_node') {
                 const node = jm.get_node(data.node);
@@ -202,20 +225,6 @@
                 }
             }
         });
-
-        // 折叠所有子节点，只显示根节点
-        setTimeout(function() {
-            const root = jm.get_root();
-            function collapseAllChildren(node) {
-                if (node && node.children) {
-                    node.children.forEach(function(child) {
-                        jm.collapse_node(child.id);
-                        collapseAllChildren(child);
-                    });
-                }
-            }
-            collapseAllChildren(root);
-        }, 400);
 
     </script>
 </body>
