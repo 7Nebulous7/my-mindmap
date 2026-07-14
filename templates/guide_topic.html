@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.title }} · 百业·云间甜铺</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏯</text></svg>">
+    <link rel="stylesheet" href="/static/common.css">
+    <script src="/static/particles.js"></script>
+    <style>
+        body {
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 70px;
+            padding-bottom: 50px;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+            animation: fadeInUp 0.5s ease both;
+        }
+        .page-header .breadcrumb {
+            font-size: 13px;
+            color: #a09080;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .page-header .breadcrumb a {
+            color: #8a7a6a;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .page-header .breadcrumb a:hover { color: #4a3f35; }
+        .page-header h1 {
+            font-size: 24px;
+            color: #4a3f35;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .topics {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 750px;
+            width: 90%;
+        }
+
+        .topic-card {
+            background: rgba(255,248,240,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 30px rgba(100,70,50,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+            overflow: hidden;
+            animation: fadeInUp 0.4s ease both;
+        }
+        .topic-card:nth-child(1) { animation-delay: 0.05s; }
+        .topic-card:nth-child(2) { animation-delay: 0.10s; }
+        .topic-card:nth-child(3) { animation-delay: 0.15s; }
+        .topic-card:nth-child(4) { animation-delay: 0.20s; }
+        .topic-card:nth-child(5) { animation-delay: 0.25s; }
+        .topic-card:nth-child(6) { animation-delay: 0.30s; }
+        .topic-card:nth-child(7) { animation-delay: 0.35s; }
+        .topic-card:nth-child(8) { animation-delay: 0.40s; }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .topic-header:hover {
+            background: rgba(200,180,150,0.1);
+        }
+        .topic-header .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .topic-header .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #b8a088;
+            flex-shrink: 0;
+        }
+        .topic-header .title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #4a3f35;
+            letter-spacing: 0.5px;
+        }
+        .topic-header .arrow {
+            font-size: 14px;
+            color: #a09080;
+            transition: transform 0.3s ease;
+        }
+        .topic-header .arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .topic-body {
+            display: none;
+            border-top: 1px solid rgba(180,150,120,0.1);
+            padding: 10px 24px 20px;
+        }
+        .topic-body.open {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #8a7a6a;
+            margin-bottom: 6px;
+            padding-left: 4px;
+        }
+        .section-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .item-tag {
+            background: rgba(255,252,248,0.8);
+            border: 1px solid rgba(180,150,120,0.15);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.5;
+        }
+
+        /* 纯文本项（没有栏目标题的情况） */
+        .plain-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <nav class="nav-bar">
+        <a href="/" class="nav-brand" style="text-decoration:none;color:#4a3f35;">🏯 百业·云间甜铺</a>
+        <div class="nav-right">
+            <a href="/guide" class="nav-link">← 返回专题</a>
+            {% if user_name %}
+            <span class="nav-user">👋 {{ user_name }}</span>
+            {% endif %}
+            <a href="/logout" class="nav-link">🚪 退出登录</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="breadcrumb">
+            <a href="/">百业·云间甜铺</a> › <a href="/guide">萌新必看知识库</a> › {{ category.title }}
+        </div>
+        <h1>{{ category.icon }} {{ category.title }}</h1>
+    </div>
+
+    <div class="topics">
+        {% for topic in category.topics %}
+        <div class="topic-card">
+            <div class="topic-header" onclick="toggleTopic(this)">
+                <div class="left">
+                    <div class="dot"></div>
+                    <span class="title">{{ topic.title }}</span>
+                </div>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="topic-body">
+                {% for section in topic.sections %}
+                <div class="section">
+                    {% if section.title %}
+                    <div class="section-title">{{ section.title }}</div>
+                    {% endif %}
+                    <div class="{% if section.title %}section-items{% else %}plain-items{% endif %}">
+                        {% for item in section.items %}
+                        <span class="item-tag">{{ item }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer-bar">© 百业·云间甜铺 · 燕云十六声玩家社区</div>
+
+    <script>
+        function toggleTopic(header) {
+            const arrow = header.querySelector('.arrow');
+            const body = header.nextElementSibling;
+            const isOpen = body.classList.contains('open');
+            if (isOpen) {
+                arrow.classList.remove('open');
+                body.classList.remove('open');
+            } else {
+                arrow.classList.add('open');
+                body.classList.add('open');
+            }
+        }
+    </script>
+
+</body>
+</html>

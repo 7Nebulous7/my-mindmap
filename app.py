@@ -171,6 +171,51 @@ def load_mindmap_data():
     """每次请求时重新加载思维导图数据，无需重启即可生效"""
     return load_json('mindmap_data.json', {})
 
+def convert_mindmap_to_guide():
+    """将 jsMind 树形数据转为专题卡片结构"""
+    data = load_mindmap_data()
+    if not data or 'children' not in data:
+        return {'categories': []}
+
+    ICONS = {
+        'damage': '💪',
+        'gacha': '🃏',
+        'shop': '🛒',
+    }
+
+    categories = []
+    for cat_node in data['children']:
+        cat_id = cat_node['id']
+        topics = []
+
+        for topic_node in cat_node.get('children', []):
+            sections = []
+            for child in topic_node.get('children', []):
+                if child.get('children'):
+                    sections.append({
+                        'title': child['topic'],
+                        'items': [item['topic'] for item in child['children']]
+                    })
+                else:
+                    if not sections:
+                        sections.append({'title': '', 'items': []})
+                    sections[0]['items'].append(child['topic'])
+            topics.append({
+                'id': topic_node['id'],
+                'title': topic_node['topic'],
+                'sections': sections
+            })
+
+        categories.append({
+            'id': cat_id,
+            'title': cat_node['topic'],
+            'icon': ICONS.get(cat_id, '📄'),
+            'tags': ['萌新必看'],
+            'topics': topics
+        })
+
+    return {'categories': categories}
+
 # ---------- 路由 ----------
 @app.route('/')
 def index():
@@ -179,12 +224,24 @@ def index():
     user_name = session.get('user_name', '')
     return render_template('index.html', user_name=user_name)
 
-@app.route('/mindmap')
-def mindmap():
+@app.route('/guide')
+def guide():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     user_name = session.get('user_name', '')
-    return render_template('mindmap.html', data=load_mindmap_data(), user_name=user_name)
+    data = convert_mindmap_to_guide()
+    return render_template('guide.html', user_name=user_name, categories=data['categories'])
+
+@app.route('/guide/<topic_id>')
+def guide_topic(topic_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_name = session.get('user_name', '')
+    data = convert_mindmap_to_guide()
+    category = next((c for c in data['categories'] if c['id'] == topic_id), None)
+    if not category:
+        return '专题不存在', 404
+    return render_template('guide_topic.html', user_name=user_name, category=category)
 
 @app.route('/login', methods=['GET', 'POST'])
 @csrf_protect
