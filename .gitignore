@@ -13,3 +13,4 @@ Thumbs.db
 # 敏感数据文件（本地保留，不上传仓库）
 authorized_ids.json
 login_logs.json
+_secrets.txt
