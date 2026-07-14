@@ -44,10 +44,16 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            max-width: 800px;
+            max-width: 960px;
             width: 90%;
+        }
+        @media (max-width: 750px) {
+            .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .cards { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -67,10 +73,12 @@
             gap: 10px;
             animation: fadeInUp 0.5s ease both;
         }
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.10s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.20s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.30s; }
 
         .card.active:hover {
             transform: translateY(-4px);
@@ -141,33 +149,53 @@
 
     <!-- 板块卡片 -->
     <div class="cards">
-        <a href="/guide" class="card active">
-            <div class="icon">📖</div>
-            <div class="title">萌新必看知识库</div>
-            <div class="desc">武学流派 · 奇术攻略 · 装备养成 · 抽卡系统</div>
-            <span class="tag open">点击进入</span>
-        </a>
+        <!-- 🗺️ 江湖风云录 -->
+        <div class="card locked">
+            <div class="icon">🗺️</div>
+            <div class="title">江湖风云录</div>
+            <div class="desc">主线·镇守 · 侠迹·奇遇 · 地图·百景</div>
+            <span class="tag wait">敬请期待</span>
+        </div>
 
+        <!-- ⚔️ 武学大成 -->
         <div class="card locked">
             <div class="icon">⚔️</div>
-            <div class="title">副本攻略</div>
-            <div class="desc">Boss机制 · 通关技巧 · 阵容搭配</div>
+            <div class="title">武学大成</div>
+            <div class="desc">武器·武学 · 心法·奇术 · 装备·锻造 · 门派·偷师</div>
             <span class="tag wait">敬请期待</span>
         </div>
 
+        <!-- 🤝 风云际会 -->
         <div class="card locked">
-            <div class="icon">🎭</div>
-            <div class="title">外观穿搭</div>
-            <div class="desc">时装展示 · 染色方案 · 配饰图鉴</div>
+            <div class="icon">🤝</div>
+            <div class="title">风云际会</div>
+            <div class="desc">团队副本 · 止戈竞技 · 百业·侠侣</div>
             <span class="tag wait">敬请期待</span>
         </div>
 
+        <!-- 🍵 闲情逸致 -->
         <div class="card locked">
-            <div class="icon">💰</div>
-            <div class="title">交易市场</div>
-            <div class="desc">销金窟指南 · 物价参考 · 理财心得</div>
+            <div class="icon">🍵</div>
+            <div class="title">闲情逸致</div>
+            <div class="desc">雅集·小戏 · 营生·闲趣 · 家园·装扮</div>
             <span class="tag wait">敬请期待</span>
         </div>
+
+        <!-- 💎 实用宝典 -->
+        <div class="card locked">
+            <div class="icon">💎</div>
+            <div class="title">实用宝典</div>
+            <div class="desc">日常·周常 · 物资·图鉴 · 成就·称号 · 工具箱</div>
+            <span class="tag wait">敬请期待</span>
+        </div>
+
+        <!-- 🐣 萌新引路（已开放） -->
+        <a href="/guide" class="card active">
+            <div class="icon">🐣</div>
+            <div class="title">萌新引路</div>
+            <div class="desc">一分钟入门 · 流派推荐 · 避坑指南 · 名词百科 · FAQ</div>
+            <span class="tag open">点击进入</span>
+        </a>
     </div>
 
     <!-- 底部版权栏 -->
