@@ -258,6 +258,21 @@ def guide_topic(topic_id):
         return '专题不存在', 404
     return render_template('guide_topic.html', user_name=user_name, category=category)
 
+def load_sections_data():
+    """加载分区数据（江湖风云录等）"""
+    return load_json('sections_data.json', {})
+
+@app.route('/section/<section_id>')
+def section_page(section_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    user_name = session.get('user_name', '')
+    sections = load_sections_data()
+    section = sections.get(section_id)
+    if not section:
+        return '分区不存在', 404
+    return render_template('section.html', user_name=user_name, section=section)
+
 @app.route('/login', methods=['GET', 'POST'])
 @csrf_protect
 def login():

@@ -1,0 +1,41 @@
+{
+  "jianghu": {
+    "name": "江湖风云录",
+    "icon": "🗺️",
+    "desc": "主线·镇守 · 侠迹·奇遇 · 地图·百景",
+    "topics": [
+      {
+        "id": "main-quest",
+        "title": "主线·镇守",
+        "subs": [
+          {"title": "第一章", "entries": []},
+          {"title": "第二章", "entries": []},
+          {"title": "第三章", "entries": []},
+          {"title": "第四章", "entries": []},
+          {"title": "第五章", "entries": []},
+          {"title": "第六章", "entries": []},
+          {"title": "第七章", "entries": []},
+          {"title": "第八章", "entries": []},
+          {"title": "第九章", "entries": []},
+          {"title": "第十章", "entries": []}
+        ]
+      },
+      {
+        "id": "side-quest",
+        "title": "侠迹·奇遇",
+        "subs": []
+      },
+      {
+        "id": "maps",
+        "title": "地图·百景",
+        "subs": [
+          {"title": "清河", "entries": []},
+          {"title": "开封", "entries": []},
+          {"title": "河西", "entries": []},
+          {"title": "不见山", "entries": []},
+          {"title": "青州", "entries": []}
+        ]
+      }
+    ]
+  }
+}

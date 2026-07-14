@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ section.name }} · 百业·云间甜铺</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏯</text></svg>">
+    <link rel="stylesheet" href="/static/common.css">
+    <script src="/static/particles.js"></script>
+    <style>
+        body {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            padding-top: 70px;
+            padding-bottom: 50px;
+            height: auto;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 750px;
+            width: 90%;
+            animation: fadeInUp 0.5s ease both;
+        }
+        .page-header .breadcrumb {
+            font-size: 13px;
+            color: #a09080;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .page-header .breadcrumb a {
+            color: #8a7a6a;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .page-header .breadcrumb a:hover { color: #4a3f35; }
+        .page-header h1 {
+            font-size: 24px;
+            color: #4a3f35;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .topics {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            max-width: 750px;
+            width: 90%;
+        }
+
+        /* 一级话题卡片 */
+        .topic-card {
+            width: 100%;
+            background: rgba(255,248,240,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 30px rgba(100,70,50,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+            overflow: hidden;
+            animation: fadeInUp 0.4s ease both;
+        }
+        .topic-card:nth-child(1) { animation-delay: 0.05s; }
+        .topic-card:nth-child(2) { animation-delay: 0.10s; }
+        .topic-card:nth-child(3) { animation-delay: 0.15s; }
+
+        .topic-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+        .topic-header:hover {
+            background: rgba(200,180,150,0.1);
+        }
+        .topic-header .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .topic-header .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #b8a088;
+            flex-shrink: 0;
+        }
+        .topic-header .title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #4a3f35;
+            letter-spacing: 0.5px;
+        }
+        .topic-header .arrow {
+            font-size: 14px;
+            color: #a09080;
+            transition: transform 0.3s ease;
+        }
+        .topic-header .arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .topic-body {
+            display: none;
+            border-top: 1px solid rgba(180,150,120,0.1);
+            padding: 10px 24px 20px;
+        }
+        .topic-body.open {
+            display: block;
+        }
+
+        /* 二级子卡片网格 */
+        .sub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .sub-card {
+            background: rgba(255,252,248,0.7);
+            border: 1px solid rgba(180,150,120,0.12);
+            border-radius: 14px;
+            padding: 14px 16px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        .sub-card:hover {
+            background: rgba(255,252,248,0.95);
+            box-shadow: 0 2px 12px rgba(100,70,50,0.08);
+        }
+        .sub-card .sub-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #4a3f35;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sub-card .sub-arrow {
+            font-size: 11px;
+            color: #a09080;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .sub-card .sub-arrow.open {
+            transform: rotate(90deg);
+        }
+
+        .sub-card-body {
+            display: none;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(180,150,120,0.08);
+        }
+        .sub-card-body.open {
+            display: block;
+        }
+
+        .entry-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .entry-tag {
+            background: rgba(255,252,248,0.8);
+            border: 1px solid rgba(180,150,120,0.15);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #5a4a3a;
+            line-height: 1.5;
+        }
+
+        .empty-hint {
+            text-align: center;
+            color: #bbb;
+            font-size: 13px;
+            padding: 12px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <nav class="nav-bar">
+        <a href="/" class="nav-brand" style="text-decoration:none;color:#4a3f35;">🏯 百业·云间甜铺</a>
+        <div class="nav-right">
+            <a href="/" class="nav-link">← 返回门户</a>
+            {% if user_name %}
+            <span class="nav-user">👋 {{ user_name }}</span>
+            {% endif %}
+            <a href="/logout" class="nav-link">🚪 退出登录</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="breadcrumb">
+            <a href="/">百业·云间甜铺</a> › {{ section.name }}
+        </div>
+        <h1>{{ section.icon }} {{ section.name }}</h1>
+    </div>
+
+    <div class="topics">
+        {% for topic in section.topics %}
+        <div class="topic-card">
+            <div class="topic-header" onclick="toggleTopic(this)">
+                <div class="left">
+                    <div class="dot"></div>
+                    <span class="title">{{ topic.title }}</span>
+                </div>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="topic-body">
+                {% if topic.subs %}
+                <div class="sub-grid">
+                    {% for sub in topic.subs %}
+                    <div class="sub-card">
+                        <div class="sub-title" onclick="toggleSub(this)">
+                            {{ sub.title }}
+                            {% if sub.entries and sub.entries|length > 0 %}
+                            <span class="sub-arrow">▶</span>
+                            {% endif %}
+                        </div>
+                        {% if sub.entries %}
+                        <div class="sub-card-body">
+                            <div class="entry-tags">
+                                {% for e in sub.entries %}
+                                <span class="entry-tag">{{ e }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="empty-hint">内容整理中，敬请期待</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer-bar">© 百业·云间甜铺 · 燕云十六声玩家社区</div>
+
+    <script>
+        function toggleTopic(header) {
+            const arrow = header.querySelector('.arrow');
+            const body = header.nextElementSibling;
+            const isOpen = body.classList.contains('open');
+            if (isOpen) {
+                arrow.classList.remove('open');
+                body.classList.remove('open');
+            } else {
+                arrow.classList.add('open');
+                body.classList.add('open');
+            }
+        }
+
+        function toggleSub(titleEl) {
+            const arrow = titleEl.querySelector('.sub-arrow');
+            if (!arrow) return;
+            const body = titleEl.nextElementSibling;
+            if (!body) return;
+            const isOpen = body.classList.contains('open');
+            if (isOpen) {
+                arrow.classList.remove('open');
+                body.classList.remove('open');
+            } else {
+                arrow.classList.add('open');
+                body.classList.add('open');
+            }
+        }
+    </script>
+
+</body>
+</html>
