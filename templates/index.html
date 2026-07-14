@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>百业-云间甜铺 · 思维导图</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏯</text></svg>">
     <link rel="stylesheet" href="/static/jsmind.css" />
     <link rel="stylesheet" href="/static/common.css">
     <script src="/static/jsmind.js"></script>
@@ -11,7 +12,7 @@
         /* ---------- 思维导图容器 (毛玻璃) ---------- */
         #jsmind_container {
             width: 92%;
-            height: calc(100vh - 80px);
+            height: calc(100vh - 100px);
             margin-top: 52px;
             background: rgba(255,248,240,0.35);
             backdrop-filter: blur(6px);
@@ -27,6 +28,22 @@
         }
         #jsmind_container.ready {
             opacity: 1;
+        }
+        /* 容器中央品牌底纹 */
+        #jsmind_container::after {
+            content: '百业·云间甜铺';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 64px;
+            font-family: "华文楷体", "KaiTi", serif;
+            letter-spacing: 12px;
+            white-space: nowrap;
+            color: #8a7a6a;
+            opacity: 0.04;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
         }
 
         /* ---------- 滚动条美化 ---------- */
@@ -144,6 +161,9 @@
 
     <!-- 水印 -->
     <div class="watermark">百业-云间甜铺</div>
+
+    <!-- 底部版权栏 -->
+    <div class="footer-bar">© 百业·云间甜铺 · 燕云十六声玩家社区</div>
 
     <script>
         const nodeData = {{ data | tojson | safe }};
